@@ -26,8 +26,7 @@ export default function ManipCard({ manip }) {
   return (
     <article
       className={`${styles.card} ${open ? styles.expanded : ""}`}
-      style={{ "--cat-color": cat?.color }}
-    >
+      style={{ "--cat-color": cat?.color }}>
       <button className={styles.header} onClick={() => setOpen(o => !o)}>
         <div className={styles.headerLeft}>
           <span className={styles.catDot} title={cat?.label}>{cat?.icon}</span>

@@ -63,7 +63,7 @@ export default function ManipulationPage({
 
         <h1>{manip.title}</h1>
         <p className={styles.lead}>
-          Cette fiche regroupe le déroulé principal, les astuces utiles et un espace prêt à accueillir tes médias d’explication.
+          Cette fiche regroupe le déroulé principal, les astuces utiles
         </p>
 
         <div className={styles.metaLine}>
@@ -114,7 +114,7 @@ export default function ManipulationPage({
             <div className={styles.mediaIcon}><ImageIcon size={20} /></div>
             <div>
               <h3>Photo du montage</h3>
-              <p>Ajoute ici une photo nette de ton dispositif pour illustrer le branchement.</p>
+              <p>Ajouter ici une photo nette du dispositif pour illustrer le branchement.</p>
             </div>
           </div>
 
@@ -138,7 +138,7 @@ export default function ManipulationPage({
             <div className={styles.mediaIcon}><Film size={20} /></div>
             <div>
               <h3>Capture du graphe</h3>
-              <p>Prévois un espace pour une courbe importante, un tableau de mesures ou une régression.</p>
+              <p>Espace prévu pour une courbe importante, un tableau de mesures ou une régression.</p>
             </div>
           </div>
         </div>
