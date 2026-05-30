@@ -1,105 +1,136 @@
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import "./index.css";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import ManipCard from "./components/ManipCard";
+import ManipulationList from "./components/ManipulationList";
+import ManipulationPage from "./components/ManipulationPage";
 import { categories, manipulations } from "./data/manipulations";
 import styles from "./App.module.css";
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedManipId, setSelectedManipId] = useState(null);
 
-  const filtered = useMemo(() => {
-    let list = manipulations;
-    if (activeCategory !== "all") {
-      list = list.filter(m => m.category === activeCategory);
-    }
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      list = list.filter(m =>
-        m.title.toLowerCase().includes(q) ||
-        m.tags.some(t => t.toLowerCase().includes(q)) ||
-        m.steps.some(s => s.text?.toLowerCase().includes(q)) ||
-        m.category.toLowerCase().includes(q) ||
-        (m.tips && m.tips.toLowerCase().includes(q))
+  const countsByCategory = useMemo(() => {
+    const counts = Object.fromEntries(categories.map((category) => [category.id, 0]));
+    manipulations.forEach((manip) => {
+      if (counts[manip.category] !== undefined) {
+        counts[manip.category] += 1;
+      }
+    });
+    return counts;
+  }, []);
+
+  const filteredManipulations = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+
+    return manipulations.filter((manip) => {
+      if (activeCategory !== "all" && manip.category !== activeCategory) return false;
+      if (!query) return true;
+
+      return (
+        manip.title.toLowerCase().includes(query) ||
+        manip.category.toLowerCase().includes(query) ||
+        manip.tags?.some((tag) => tag.toLowerCase().includes(query)) ||
+        manip.tips?.toLowerCase().includes(query) ||
+        manip.warning?.toLowerCase().includes(query) ||
+        manip.steps?.some((step) =>
+          step.text?.toLowerCase().includes(query) ||
+          step.subSteps?.some((subStep) => subStep.toLowerCase().includes(query))
+        )
       );
-    }
-    return list;
+    });
   }, [activeCategory, searchQuery]);
 
-  const grouped = useMemo(() => {
-    if (activeCategory !== "all") {
-      return { [activeCategory]: filtered };
-    }
-    const g = {};
-    categories.forEach(c => {
-      const items = filtered.filter(m => m.category === c.id);
-      if (items.length > 0) g[c.id] = items;
-    });
-    return g;
-  }, [filtered, activeCategory]);
+  const selectedIndex = useMemo(
+    () => filteredManipulations.findIndex((manip) => manip.id === selectedManipId),
+    [filteredManipulations, selectedManipId]
+  );
 
-  const activeCat = categories.find(c => c.id === activeCategory);
+  const selectedManipulation = selectedManipId
+    ? manipulations.find((manip) => manip.id === selectedManipId) ?? null
+    : null;
+
+  const activeCategoryData = categories.find((category) => category.id === activeCategory) ?? null;
+
+  const openManipulation = (id) => {
+    setSelectedManipId(id);
+  };
+
+  const closeManipulation = () => {
+    setSelectedManipId(null);
+  };
+
+  const goPrevious = () => {
+    if (selectedIndex > 0) {
+      setSelectedManipId(filteredManipulations[selectedIndex - 1].id);
+    }
+  };
+
+  const goNext = () => {
+    if (selectedIndex >= 0 && selectedIndex < filteredManipulations.length - 1) {
+      setSelectedManipId(filteredManipulations[selectedIndex + 1].id);
+    }
+  };
+
+  const showAll = () => {
+    setActiveCategory("all");
+    setSelectedManipId(null);
+  };
+
+  const totalVisible = filteredManipulations.length;
 
   return (
     <div className={styles.app}>
-      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Header
+        searchQuery={searchQuery}
+        setSearchQuery={(value) => {
+          setSearchQuery(value);
+          setSelectedManipId(null);
+        }}
+        totalCount={manipulations.length}
+      />
+
       <div className={styles.layout}>
         <Sidebar
+          categories={categories.map((category) => ({
+            ...category,
+            totalCount: countsByCategory[category.id] ?? 0,
+          }))}
           activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
-          searchQuery={searchQuery}
+          setActiveCategory={(categoryId) => {
+            setActiveCategory(categoryId);
+            setSelectedManipId(null);
+          }}
+          countsByCategory={filteredManipulations.reduce((acc, manip) => {
+            acc[manip.category] = (acc[manip.category] ?? 0) + 1;
+            return acc;
+          }, {})}
+          totalVisible={totalVisible}
+          totalCount={manipulations.length}
+          onShowAll={showAll}
         />
-        <main className={styles.main}>
-          <div className={styles.sectionHeader}>
-            {activeCategory !== "all" && activeCat ? (
-              <div className={styles.catInfo} style={{ "--cat-color": activeCat.color }}>
-                <span className={styles.catInfoIcon}>{activeCat.icon}</span>
-                <div>
-                  <div className={styles.catInfoTitle}>{activeCat.label}</div>
-                  <div className={styles.catInfoDesc}>{activeCat.description}</div>
-                </div>
-              </div>
-            ) : (
-              <div className={styles.allInfo}>
-                <span>Toutes les manipulations</span>
-                {searchQuery && (
-                  <span className={styles.searchResultCount}>
-                    — {filtered.length} résultat{filtered.length !== 1 ? "s" : ""} pour « {searchQuery} »
-                  </span>
-                )}
-              </div>
-            )}
-          </div>
 
-          {filtered.length === 0 ? (
-            <div className={styles.empty}>
-              <div className={styles.emptyIcon}>⌕</div>
-              <div className={styles.emptyText}>Aucune manipulation trouvée.</div>
-              <div className={styles.emptySub}>Essaie un autre mot-clé ou catégorie.</div>
-            </div>
+        <main className={styles.main}>
+          {selectedManipulation ? (
+            <ManipulationPage
+              manip={selectedManipulation}
+              category={activeCategoryData ?? categories.find((category) => category.id === selectedManipulation.category)}
+              onBack={closeManipulation}
+              onPrevious={selectedIndex > 0 ? goPrevious : null}
+              onNext={selectedIndex >= 0 && selectedIndex < filteredManipulations.length - 1 ? goNext : null}
+              previousLabel={selectedIndex > 0 ? filteredManipulations[selectedIndex - 1].title : ""}
+              nextLabel={selectedIndex >= 0 && selectedIndex < filteredManipulations.length - 1 ? filteredManipulations[selectedIndex + 1].title : ""}
+            />
           ) : (
-            Object.entries(grouped).map(([catId, items]) => {
-              const cat = categories.find(c => c.id === catId);
-              return (
-                <section key={catId} className={styles.group}>
-                  {activeCategory === "all" && (
-                    <div className={styles.groupHeader} style={{ "--cat-color": cat?.color }}>
-                      <span className={styles.groupIcon}>{cat?.icon}</span>
-                      <span className={styles.groupTitle}>{cat?.label}</span>
-                      <span className={styles.groupCount}>{items.length}</span>
-                      <div className={styles.groupLine} />
-                    </div>
-                  )}
-                  <div className={styles.grid}>
-                    {items.map(m => (
-                      <ManipCard key={m.id} manip={m} />
-                    ))}
-                  </div>
-                </section>
-              );
-            })
+            <ManipulationList
+              categories={categories}
+              manipulations={manipulations}
+              searchQuery={searchQuery}
+              activeCategory={activeCategory}
+              onOpenManipulation={openManipulation}
+            />
           )}
         </main>
       </div>

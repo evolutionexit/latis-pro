@@ -1,142 +1,32 @@
-.app {
+ .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background:
+    radial-gradient(circle at top left, rgba(0, 212, 255, 0.09), transparent 32%),
+    radial-gradient(circle at top right, rgba(255, 107, 53, 0.08), transparent 28%),
+    var(--bg);
 }
 
 .layout {
   display: flex;
   flex: 1;
+  min-height: 0;
 }
 
 .main {
   flex: 1;
-  padding: 28px 32px 60px;
   min-width: 0;
-  max-width: 1100px;
+  padding: 28px 32px 56px;
+  max-width: 1280px;
 }
 
-.sectionHeader {
-  margin-bottom: 24px;
-}
-
-.catInfo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 20px;
-  background: color-mix(in srgb, var(--cat-color) 6%, var(--surface));
-  border: 1px solid color-mix(in srgb, var(--cat-color) 20%, var(--border));
-  border-radius: 8px;
-}
-
-.catInfoIcon {
-  font-size: 1.8rem;
-}
-
-.catInfoTitle {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--cat-color);
-  letter-spacing: 0.05em;
-}
-
-.catInfoDesc {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-top: 3px;
-}
-
-.allInfo {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.searchResultCount {
-  color: var(--accent);
-}
-
-.group {
-  margin-bottom: 36px;
-}
-
-.groupHeader {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.groupIcon {
-  font-size: 1rem;
-}
-
-.groupTitle {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--cat-color);
-}
-
-.groupCount {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 1px 6px;
-  border-radius: 10px;
-}
-
-.groupLine {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--border) 0%, transparent 80%);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 10px;
-}
-
-.empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 40px;
-  color: var(--text-dim);
-  text-align: center;
-}
-
-.emptyIcon {
-  font-size: 3rem;
-  margin-bottom: 16px;
-  font-family: var(--font-mono);
-}
-
-.emptyText {
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-
-.emptySub {
-  font-size: 0.82rem;
-  color: var(--text-dim);
-}
-
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .layout {
     flex-direction: column;
   }
+
   .main {
-    padding: 16px;
+    padding: 18px;
   }
 }

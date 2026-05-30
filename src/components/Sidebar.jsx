@@ -1,47 +1,62 @@
-import { useState, useEffect } from "react";
-import styles from "./Header.module.css";
+import styles from "./Sidebar.module.css";
 
-export default function Header({ searchQuery, setSearchQuery }) {
-  const [tick, setTick] = useState(true);
-
-  useEffect(() => {
-    const t = setInterval(() => setTick(v => !v), 700);
-    return () => clearInterval(t);
-  }, []);
-
+export default function Sidebar({
+  categories,
+  activeCategory,
+  setActiveCategory,
+  countsByCategory,
+  totalVisible,
+  totalCount,
+  onShowAll,
+}) {
   return (
-    <header className={styles.header}>
-      <div className={styles.top}>
-        <div className={styles.logo}>
-          <span className={styles.logoIcon}>⚗</span>
-          <div>
-            <div className={styles.logoTitle}>
-              LATIS<span className={styles.logoAccent}>PRO</span>
-            </div>
-            <div className={styles.logoSub}>Guide ECE 2026 · Physique-Chimie · 92 sujets analysés</div>
-          </div>
-        </div>
+    <aside className={styles.sidebar}>
+      <div className={styles.panel}>
+        <div className={styles.panelLabel}>Navigation</div>
+        <button
+          type="button"
+          className={`${styles.navButton} ${activeCategory === "all" ? styles.active : ""}`}
+          onClick={onShowAll}
+        >
+          <span className={styles.navName}>Toutes les manipulations</span>
+          <span className={styles.navCount}>{totalVisible}/{totalCount}</span>
+        </button>
+      </div>
 
-        <div className={styles.terminal}>
-          <span className={styles.termPrompt}>$</span>
-          <span className={styles.termText}> ece_2026 --annales 92 --mat PC</span>
-          <span className={styles.cursor} style={{ opacity: tick ? 1 : 0 }}>▌</span>
+      <div className={styles.panel}>
+        <div className={styles.panelLabel}>Catégories</div>
+        <div className={styles.categoryList}>
+          {categories.map((category) => {
+            const visible = countsByCategory[category.id] ?? 0;
+            const total = category.totalCount ?? visible;
+            const isActive = activeCategory === category.id;
+
+            return (
+              <button
+                key={category.id}
+                type="button"
+                className={`${styles.categoryButton} ${isActive ? styles.active : ""}`}
+                style={{ "--cat-color": category.color }}
+                onClick={() => setActiveCategory(category.id)}
+              >
+                <span className={styles.categoryIcon}>{category.icon}</span>
+                <span className={styles.categoryText}>
+                  <span className={styles.categoryName}>{category.label}</span>
+                  <span className={styles.categoryDescription}>{category.description}</span>
+                </span>
+                <span className={styles.categoryCount}>{visible}/{total}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div className={styles.searchWrap}>
-        <span className={styles.searchIcon}>⌕</span>
-        <input
-          type="text"
-          placeholder="Rechercher : RC, spectro, titrage pH, pointage vidéo, Python…"
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-          className={styles.search}
-        />
-        {searchQuery && (
-          <button className={styles.clear} onClick={() => setSearchQuery("")}>×</button>
-        )}
+      <div className={styles.panel}>
+        <div className={styles.panelLabel}>Astuce</div>
+        <p className={styles.tip}>
+          Ouvre une manipulation pour afficher les étapes, puis ajoute plus tard tes photos, captures ou vidéos dans la section média.
+        </p>
       </div>
-    </header>
+    </aside>
   );
 }
