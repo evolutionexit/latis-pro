@@ -24,11 +24,6 @@ export default function Header({ searchQuery, setSearchQuery, totalCount }) {
             <div className={styles.subtitle}>Guide ECE · Physique-Chimie</div>
           </div>
         </div>
-
-        <div className={styles.statusPill}>
-          <span className={styles.statusDot} style={{ opacity: tick ? 1 : 0.45 }} />
-          <span>{totalCount} manipulations</span>
-        </div>
       </div>
 
       <div className={styles.searchRow}>
@@ -53,7 +48,6 @@ export default function Header({ searchQuery, setSearchQuery, totalCount }) {
             </button>
           )}
         </div>
-        <div className={styles.searchHint}>Recherche instantanée dans les titres, tags, conseils et étapes.</div>
       </div>
     </header>
   );

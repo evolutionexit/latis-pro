@@ -55,7 +55,7 @@ export default function ManipulationList({
             <Sparkles size={14} />
             <span>Préparation ECE</span>
           </div>
-          <h1>Tout le guide réuni dans une interface claire et partageable.</h1>
+          <h1>Toutes les manipulations LatisPro réunis</h1>
           <p>
             Parcours les manipulations par catégorie, cherche un mot-clé et ouvre chaque fiche comme une vraie page de révision.
           </p>

@@ -27,8 +27,6 @@ export default function Sidebar({
         <div className={styles.panelLabel}>Catégories</div>
         <div className={styles.categoryList}>
           {categories.map((category) => {
-            const visible = countsByCategory[category.id] ?? 0;
-            const total = category.totalCount ?? visible;
             const isActive = activeCategory === category.id;
 
             return (
@@ -44,19 +42,12 @@ export default function Sidebar({
                   <span className={styles.categoryName}>{category.label}</span>
                   <span className={styles.categoryDescription}>{category.description}</span>
                 </span>
-                <span className={styles.categoryCount}>{visible}/{total}</span>
               </button>
             );
           })}
         </div>
       </div>
 
-      <div className={styles.panel}>
-        <div className={styles.panelLabel}>Astuce</div>
-        <p className={styles.tip}>
-          Ouvre une manipulation pour afficher les étapes, puis ajoute plus tard tes photos, captures ou vidéos dans la section média.
-        </p>
-      </div>
     </aside>
   );
 }

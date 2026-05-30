@@ -11,6 +11,7 @@ export const categories = [
     label: "ExAO & Acquisition",
     color: "#00d4ff",
     icon: "⚡",
+    videoID: "dQw4w9WgXcQ",
     description: "Interface ExAO, capteurs, acquisition temporelle"
   },
   {

@@ -118,11 +118,19 @@ export default function ManipulationPage({
           </div>
 
           <div className={styles.mediaCard}>
-            <div className={styles.mediaIcon}><PlayCircle size={20} /></div>
-            <div>
-              <h3>Vidéo d’explication</h3>
-              <p>Tu pourras intégrer une courte vidéo pour expliquer la méthode ou le réglage.</p>
-            </div>
+            <a
+              href={`https://www.youtube.com/watch?v=${videoId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.videoLink}
+            >
+              <img
+                src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                alt="Vidéo explicative"
+                className={styles.videoThumbnail}
+              />
+              <div className={styles.playButton}>▶</div>
+            </a>
           </div>
 
           <div className={styles.mediaCard}>
