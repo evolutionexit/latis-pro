@@ -11,7 +11,6 @@ export const categories = [
     label: "ExAO & Acquisition",
     color: "#00d4ff",
     icon: "⚡",
-    videoID: "dQw4w9WgXcQ",
     description: "Interface ExAO, capteurs, acquisition temporelle"
   },
   {
@@ -76,6 +75,7 @@ export const manipulations = [
     title: "Ouvrir LatisPro et configurer l'interface ExAO",
     difficulty: "facile",
     tags: ["démarrage", "ExAO", "capteur", "voie"],
+    videoId: "dQw4w9WgXcQ",
     annales: [],
     steps: [
       { text: "Lancer LatisPro. Brancher l'interface ExAO (Orphy, Sysam SP5, Arduino…) en USB avant d'ouvrir le logiciel." },
@@ -94,6 +94,7 @@ export const manipulations = [
     title: "Paramétrer l'acquisition temporelle (durée, fréquence, déclenchement)",
     difficulty: "facile",
     tags: ["durée", "fréquence", "déclenchement", "temporel"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["06", "27", "30", "41", "54", "62A", "62B", "63"],
     steps: [
       { text: "Aller dans Expérience → Paramétrer → Acquisition." },
@@ -118,6 +119,7 @@ export const manipulations = [
     title: "Lancer, observer et arrêter une acquisition",
     difficulty: "facile",
     tags: ["lancement", "temps réel", "arrêt"],
+    videoId: "dQw4w9WgXcQ",
     annales: [],
     steps: [
       { text: "Cliquer sur ▶ (Lancer l'acquisition) ou appuyer sur F5." },
@@ -134,6 +136,7 @@ export const manipulations = [
     title: "Acquisition point par point (mode manuel — titrage, calorimétrie)",
     difficulty: "moyen",
     tags: ["manuel", "titrage", "pH", "point par point"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["13", "61", "68", "70", "74", "90"],
     steps: [
       { text: "Dans Paramétrer → Acquisition, choisir le mode Manuel ou Point par point." },
@@ -157,6 +160,7 @@ export const manipulations = [
     title: "Tracer Uc(t) lors de la charge d'un condensateur",
     difficulty: "moyen",
     tags: ["RC", "charge", "condensateur", "constante de temps", "exponentielle"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["06", "27", "30", "41", "54", "62A", "62B", "63"],
     steps: [
       { text: "Monter le circuit : générateur E, résistance R, condensateur C en série. Brancher la voie EA0 en parallèle sur C (mesure Uc)." },
@@ -174,6 +178,7 @@ export const manipulations = [
     title: "Déterminer la constante de temps τ graphiquement",
     difficulty: "moyen",
     tags: ["constante de temps", "τ", "tangente", "méthode graphique"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["06", "27", "30", "41", "54"],
     steps: [
       { text: "Sur la courbe Uc(t), activer le curseur (icône ⊕ ou Ctrl+L)." },
@@ -191,6 +196,7 @@ export const manipulations = [
     title: "Ajustement exponentiel pour mesurer τ précisément",
     difficulty: "moyen",
     tags: ["modélisation", "exponentielle", "ajustement", "τ", "RC"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["06", "30", "41", "62A", "62B", "63"],
     steps: [
       { text: "Afficher la courbe Uc(t) dans le graphique." },
@@ -214,6 +220,7 @@ export const manipulations = [
     title: "Configurer un suivi spectrophotométrique (absorbance vs temps)",
     difficulty: "moyen",
     tags: ["spectrophotomètre", "absorbance", "cinétique", "ExAO", "Beer-Lambert"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["12", "29", "43", "44", "49", "72", "76", "77"],
     steps: [
       { text: "Brancher le spectrophotomètre ou colorimètre sur l'interface ExAO (voie EA0 généralement)." },
@@ -232,6 +239,7 @@ export const manipulations = [
     title: "Tracer une courbe d'étalonnage A = f(C) et déterminer une concentration",
     difficulty: "moyen",
     tags: ["étalonnage", "Beer-Lambert", "concentration", "régression linéaire"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["29", "43", "44", "84"],
     steps: [
       { text: "Préparer les solutions étalons (ex. 5 solutions de concentrations connues C₀, C₁… Cₙ)." },
@@ -251,6 +259,7 @@ export const manipulations = [
     title: "Suivre une cinétique et en extraire la loi de vitesse (ordre 0, 1, 2)",
     difficulty: "avancé",
     tags: ["cinétique", "ordre", "loi de vitesse", "suivi spectro", "ExAO"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["12", "49", "72", "76", "77"],
     steps: [
       { text: "Acquérir A(t) sur toute la durée de la réaction (voir 'Configurer un suivi spectrophotométrique')." },
@@ -274,6 +283,7 @@ export const manipulations = [
     title: "Réaliser un dosage pH-métrique et trouver l'équivalence",
     difficulty: "moyen",
     tags: ["pH", "électrode", "équivalence", "saut de pH", "titrage"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["01", "17", "68", "70", "90"],
     steps: [
       { text: "Brancher l'électrode pH-métrique sur la voie ExAO configurée en pH (plage 0–14)." },
@@ -298,6 +308,7 @@ export const manipulations = [
     title: "Réaliser un dosage conductimétrique et trouver l'équivalence",
     difficulty: "moyen",
     tags: ["conductimétrie", "conductivité", "équivalence", "rupture de pente"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["13", "61", "74"],
     steps: [
       { text: "Brancher la cellule conductimétrique sur la voie ExAO (configurée en Conductivité σ en mS/cm ou S/m)." },
@@ -316,6 +327,7 @@ export const manipulations = [
     title: "Tracer et analyser la courbe dérivée dpH/dV",
     difficulty: "moyen",
     tags: ["dérivée", "dpH/dV", "équivalence", "maximum"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["01", "17", "68", "70"],
     steps: [
       { text: "Après acquisition du titrage pH-métrique, afficher la courbe pH = f(V)." },
@@ -337,6 +349,7 @@ export const manipulations = [
     title: "Importer une vidéo dans LatisPro et paramétrer le pointage",
     difficulty: "moyen",
     tags: ["pointage vidéo", "mécanique", "trajectoire", "cinématique"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["09", "34", "35", "39", "47", "83"],
     steps: [
       { text: "Dans LatisPro, aller dans Expérience → Nouveau → Analyse vidéo (ou ouvrir l'onglet Vidéo)." },
@@ -354,6 +367,7 @@ export const manipulations = [
     title: "Pointer image par image et obtenir x(t), y(t)",
     difficulty: "moyen",
     tags: ["pointage", "image par image", "trajectoire", "x(t)", "y(t)"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["09", "34", "35", "39", "47"],
     steps: [
       { text: "Avancer à la première image utile (début du mouvement)." },
@@ -371,6 +385,7 @@ export const manipulations = [
     title: "Calculer vx, vy, v et vérifier les lois de la mécanique",
     difficulty: "avancé",
     tags: ["vitesse", "dérivée", "énergie mécanique", "chute libre", "mouvement"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["09", "34", "35", "39", "47", "83"],
     steps: [
       { text: "Après le pointage, créer les colonnes de vitesse par calcul numérique (méthode des taux d'accroissement centrés) :" },
@@ -397,6 +412,7 @@ export const manipulations = [
     title: "Créer une colonne calculée dans le tableur LatisPro",
     difficulty: "facile",
     tags: ["colonne calculée", "formule", "tableau"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["10", "13", "14", "17", "32", "34", "38", "43", "44", "49", "60", "73", "74", "76", "77", "79", "82", "84", "86", "87", "88"],
     steps: [
       { text: "Dans le tableau de données, faire un clic droit sur l'en-tête d'une colonne vide → Insérer une colonne calculée (ou Nouvelle grandeur calculée)." },
@@ -419,6 +435,7 @@ export const manipulations = [
     title: "Utiliser le tableur intégré pour calculer moyenne, écart-type, incertitude",
     difficulty: "moyen",
     tags: ["statistiques", "moyenne", "écart-type", "incertitude", "type A"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["10", "13", "14", "38", "51", "58", "65", "67", "73", "86", "87", "88"],
     steps: [
       { text: "Entrer les n mesures répétées dans une colonne du tableau (ex. colonne 'mesures')." },
@@ -441,6 +458,7 @@ export const manipulations = [
     title: "Créer un graphique avec le tableur et mettre en forme les axes",
     difficulty: "facile",
     tags: ["graphique", "axes", "titre", "unité", "tableur"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["10", "14", "38", "43", "44", "49", "60", "65", "73", "82", "84", "88"],
     steps: [
       { text: "Sélectionner les colonnes de données (X et Y) dans le tableau." },
@@ -459,6 +477,7 @@ export const manipulations = [
     title: "Exécuter et modifier un script Python fourni dans le sujet",
     difficulty: "moyen",
     tags: ["Python", "script", "incertitudes", "exécution", "Thonny", "Mu"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["01", "03", "09", "19", "20", "22", "34", "35", "38", "41", "47", "50", "52", "59", "64", "65", "78", "80", "89A", "89B"],
     steps: [
       { text: "Télécharger le fichier .py fourni avec le sujet (ou le recopier depuis l'annexe papier)." },
@@ -477,6 +496,7 @@ export const manipulations = [
     title: "Calculer et propager les incertitudes (méthode ECE)",
     difficulty: "avancé",
     tags: ["incertitudes", "propagation", "type B", "type A", "composition"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["01", "06", "13", "22", "30", "34", "51", "59", "62A", "62B", "74", "77"],
     steps: [
       { text: "Identifier la formule de la grandeur résultat (ex. C = n/V, R = U/I, τ = RC)." },
@@ -505,6 +525,7 @@ export const manipulations = [
     title: "Régression linéaire (droite y = ax + b ou y = ax)",
     difficulty: "facile",
     tags: ["régression linéaire", "droite", "coefficient directeur", "r²"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["02", "04", "10", "13", "14", "17", "29", "32", "34", "43", "44", "49", "58", "60", "65", "74", "76", "77", "82", "84", "86", "87", "88"],
     steps: [
       { text: "Afficher les points expérimentaux dans le graphique." },
@@ -524,6 +545,7 @@ export const manipulations = [
     title: "Ajustement exponentiel et extraction des paramètres",
     difficulty: "moyen",
     tags: ["exponentielle", "modèle", "ajustement", "τ", "constante de temps"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["06", "30", "41", "47", "62A", "62B", "63", "64", "65"],
     steps: [
       { text: "Afficher la courbe à ajuster." },
@@ -541,6 +563,7 @@ export const manipulations = [
     title: "Ajustement sinusoïdal (signaux électriques, oscillations)",
     difficulty: "moyen",
     tags: ["sinusoïde", "signal", "fréquence", "amplitude", "phase"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["11"],
     steps: [
       { text: "Acquérir le signal sinusoïdal (ex. tension aux bornes d'un condensateur, son, signal Doppler)." },
@@ -558,6 +581,7 @@ export const manipulations = [
     title: "Ajustement en loi de puissance (y = a·xⁿ)",
     difficulty: "avancé",
     tags: ["loi de puissance", "log-log", "ajustement", "puissance"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["47", "80"],
     steps: [
       { text: "Tracer d'abord le graphique brut. Si la courbe ressemble à une puissance, on peut le vérifier en passant en log-log." },
@@ -578,6 +602,7 @@ export const manipulations = [
     title: "Mesure calorimétrique avec ExAO (suivi de température)",
     difficulty: "moyen",
     tags: ["calorimétrie", "température", "thermosonde", "ExAO"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["22", "64", "65"],
     steps: [
       { text: "Brancher la thermosonde sur la voie ExAO (EA0), configurer en Température (°C), plage 0–100°C." },
@@ -596,6 +621,7 @@ export const manipulations = [
     title: "Mesure de diffraction (fente / fil / réseau) et exploitation",
     difficulty: "moyen",
     tags: ["diffraction", "fente", "réseau", "longueur d'onde", "laser"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["18", "21", "52", "59", "78", "89A", "89B"],
     steps: [
       { text: "Monter le montage : laser → fente (ou fil, ou réseau) → écran à distance D mesurée avec une règle." },
@@ -614,6 +640,7 @@ export const manipulations = [
     title: "Suivi conductimétrique d'une réaction (sans titrage)",
     difficulty: "moyen",
     tags: ["conductimétrie", "cinétique", "suivi", "ExAO"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["79"],
     steps: [
       { text: "Brancher la cellule conductimétrique sur la voie ExAO (configurée en conductivité σ, mS/cm)." },
@@ -631,6 +658,7 @@ export const manipulations = [
     title: "Utiliser Arduino / micro:bit avec LatisPro",
     difficulty: "avancé",
     tags: ["Arduino", "micro:bit", "capteur", "numérique", "programme"],
+    videoId: "dQw4w9WgXcQ",
     annales: ["06", "11", "21", "62A", "62B"],
     steps: [
       { text: "Téléverser le programme fourni dans le sujet sur la carte (Arduino IDE ou éditeur micro:bit)." },
@@ -648,6 +676,7 @@ export const manipulations = [
     title: "Exporter graphique et données pour le compte-rendu",
     difficulty: "facile",
     tags: ["export", "PNG", "CSV", "sauvegarde", "rapport", ".ltp"],
+    videoId: "dQw4w9WgXcQ",
     annales: [],
     steps: [
       { text: "Sauvegarder l'expérience LatisPro : Fichier → Enregistrer (Ctrl+S) → format .ltp ou .exp. Faire cela régulièrement." },

@@ -1,5 +1,6 @@
 import { ArrowLeft, CalendarRange, Film, Image as ImageIcon, Link2, PlayCircle, BadgeInfo, ChevronRight } from "lucide-react";
 import styles from "./ManipulationPage.module.css";
+import { manipulations } from "../data/manipulations.js";
 
 function StepList({ steps }) {
   let index = 0;
@@ -119,13 +120,13 @@ export default function ManipulationPage({
 
           <div className={styles.mediaCard}>
             <a
-              href={`https://www.youtube.com/watch?v=${videoId}`}
+              href={`https://www.youtube.com/watch?v=${manipulations.videoId}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.videoLink}
             >
               <img
-                src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                src={`https://img.youtube.com/vi/${manipulations.videoId}/maxresdefault.jpg`}
                 alt="Vidéo explicative"
                 className={styles.videoThumbnail}
               />
