@@ -1,0 +1,145 @@
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 28px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 117px;
+  height: calc(100vh - 117px);
+  overflow-y: auto;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 16px;
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+.catBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-align: left;
+  width: 100%;
+  transition: all var(--transition);
+}
+
+.catBtn:hover {
+  background: var(--surface);
+  color: var(--cat-color, var(--text));
+  border-color: var(--border);
+}
+
+.catBtn.active {
+  background: rgba(255,255,255,0.04);
+  color: var(--cat-color, var(--text));
+  border-color: var(--border);
+  box-shadow: inset 3px 0 0 var(--cat-color, var(--accent));
+}
+
+.catIcon {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.catName {
+  flex: 1;
+}
+
+.catCount {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  background: var(--surface2);
+  padding: 1px 6px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.legend {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.facile {
+  color: var(--accent3);
+  border-color: rgba(127,255,107,0.3);
+  background: rgba(127,255,107,0.06);
+}
+
+.moyen {
+  color: var(--accent2);
+  border-color: rgba(255,107,53,0.3);
+  background: rgba(255,107,53,0.06);
+}
+
+.avance {
+  color: #b388ff;
+  border-color: rgba(179,136,255,0.3);
+  background: rgba(179,136,255,0.06);
+}
+
+.tip {
+  margin: 0 16px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.tipIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.tipText {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
